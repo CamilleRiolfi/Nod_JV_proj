@@ -1,9 +1,13 @@
 import axios from 'axios';
 
 const TestServerController = {
-  load: () => new Promise((success) => {
-    const body = { username: 'tetet', password: 'zererere' };
-    axios.get('http://localhost:8080/testroute/test/22/', body).then((response) => {
+  load: (number) => new Promise((success) => {
+    axios.get(`http://localhost:8080/testroute/test/${number}`).then((response) => {
+      success(response.data);
+    });
+  }),
+  loadPersonnage: () => new Promise((success) => {
+    axios.get('http://localhost:8080/player/50').then((response) => {
       success(response.data);
     });
   }),
